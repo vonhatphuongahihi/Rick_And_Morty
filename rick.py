@@ -11,7 +11,7 @@ class Rick(Morty):
         moving_direction, start_pos = self.define_spawn_pos(size)
         self.rect = pygame.Rect(start_pos[0], start_pos[1], size[0]//1.2, size[1]//1.2)
         rickImg = random.choice(rickImgs)
-        self.images = [image.load(rickImg, size=size, flip=moving_direction=="right") for nb in range(1, 10)] # load the images
+        self.images = [image.load(rickImg, size=size, flip=moving_direction=="right") for nb in range(1, 10)]
         self.current_frame = 0
         self.animation_timer = 0
     def kill(self, rick):

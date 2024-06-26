@@ -6,7 +6,7 @@ from settings import *
 mortyImgs = ['assets/images/morty/evil_morty.png', 'assets/images/morty/potato_morty.png']
 class Morty:
     def __init__(self):
-        #size
+
         random_size_value = random.uniform(MORTY_SIZE_RANDOMIZE[0], MORTY_SIZE_RANDOMIZE[1])
         size = (int(MORTY_SIZES[0] * random_size_value), int(MORTY_SIZES[1] * random_size_value))
         moving_direction, start_pos = self.define_spawn_pos(size)
@@ -15,7 +15,7 @@ class Morty:
         self.images = [image.load(mortyImg, size=size, flip=moving_direction=="right")]
         self.current_frame = 0
         self.animation_timer = 0
-    def define_spawn_pos(self, size): # define the start pos and moving vel of the morty
+    def define_spawn_pos(self, size):
         vel = random.uniform(MORTY_MOVE_SPEED["min"], MORTY_MOVE_SPEED["max"])
         moving_direction = random.choice(("left", "right", "up", "down"))
         if moving_direction == "right":
@@ -33,7 +33,7 @@ class Morty:
         return moving_direction, start_pos
     def move(self):
         self.rect.move_ip(self.vel)
-    def animate(self): # change the frame of the rm when needed
+    def animate(self):
         t = time.time()
         if t > self.animation_timer:
             self.animation_timer = t + ANIMATION_SPEED
@@ -47,6 +47,6 @@ class Morty:
         image.draw(surface, self.images[self.current_frame], self.rect.center, pos_mode="center")
         if DRAW_HITBOX:
             self.draw_hitbox(surface)
-    def kill(self, morty): # remove the morty from the list
+    def kill(self, morty):
         morty.remove(self)
         return 1

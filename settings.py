@@ -1,5 +1,5 @@
 import pygame
-WINDOW_NAME = "Game"
+WINDOW_NAME = "Rick And Morty"
 GAME_TITLE = WINDOW_NAME
 SCREEN_WIDTH, SCREEN_HEIGHT = 880, 750
 FPS = 90
@@ -13,10 +13,10 @@ RICKS_SIZES = (100, 100)
 RICK_SIZE_RANDOMIZE = (1.2, 1.5)
 DRAW_HITBOX = False
 ANIMATION_SPEED = 0.09
-GAME_DURATION = 45
+GAME_DURATION = 60
 MORTY_SPAWN_TIME = 1
-MORTY_MOVE_SPEED = {"min": 1, "max": 6}
-RICK_PENALITY = 1
+MORTY_MOVE_SPEED = {"min": 3, "max": 5}
+RICK_PENALITY = 5
 
 COLORS = {"title": (255, 255, 255), "score": (255, 255, 255), "timer": (255, 255, 255),
             "buttons": {"default": (56, 67, 209), "second":  (87, 99, 255),
@@ -26,6 +26,6 @@ SOUNDS_VOLUME = 0.2
 
 pygame.font.init()
 FONTS = {}
-FONTS["small"] = pygame.font.Font(None, 40)
-FONTS["medium"] = pygame.font.Font(None, 50)
-FONTS["big"] = pygame.font.Font(None, 120)
+FONTS["small"] = pygame.font.Font("assets/GangOfThree.ttf", 36)
+FONTS["medium"] = pygame.font.Font("assets/GangOfThree.ttf", 50)
+FONTS["big"] = pygame.font.Font("assets/GangOfThree.ttf", 120)
