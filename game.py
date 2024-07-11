@@ -27,12 +27,16 @@ class Game:
         t = time.time()
         if t > self.rms_spawn_timer:
             self.rms_spawn_timer = t + MORTY_SPAWN_TIME
-            nb = (GAME_DURATION-self.time_left)/GAME_DURATION * 100  / 2
-            if random.randint(0, 100) < nb:
-                self.rms.append(Rick())
+            time_left = GAME_DURATION - (t - self.game_start_time)
+
+            if time_left < 54:  
+                if random.random() < 0.5:  
+                    self.rms.append(Rick())
             else:
-                self.rms.append(Morty())
-            if self.time_left < GAME_DURATION/2:
+                if random.random() < 1: 
+                    self.rms.append(Morty())
+
+            if time_left < GAME_DURATION - 8 and random.random() < 0.6:  
                 self.rms.append(Morty())
     def load_camera(self):
         _, self.frame = self.cap.read()
