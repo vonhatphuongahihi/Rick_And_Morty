@@ -29,15 +29,23 @@ class Game:
             self.rms_spawn_timer = t + MORTY_SPAWN_TIME
             time_left = GAME_DURATION - (t - self.game_start_time)
 
-            if time_left < 54:  
-                if random.random() < 0.5:  
-                    self.rms.append(Rick())
-            else:
-                if random.random() < 1: 
+            if time_left == 54:  
+                self.rms.append(Rick())
+            elif time_left < 54:
+                if time_left > 15:  
+                    if random.random() < 0.5:  
+                        self.rms.append(Rick())
+                    if random.random() < 0.65: 
+                        self.rms.append(Morty())
+                else:  
+                    if random.random() < 0.5:  
+                        self.rms.append(Rick())
+                    if random.random() < 0.5: 
+                        self.rms.append(Morty())
+            else:  
+                if random.random() < 1:  
                     self.rms.append(Morty())
 
-            if time_left < GAME_DURATION - 8 and random.random() < 0.6:  
-                self.rms.append(Morty())
     def load_camera(self):
         _, self.frame = self.cap.read()
     def set_hand_position(self):
@@ -49,10 +57,10 @@ class Game:
         for rm in self.rms:
             rm.draw(self.surface)
         self.hand.draw(self.surface)
-        ui.draw_text(self.surface, f"Score : {self.score}", (5, 5), COLORS["score"], font=FONTS["medium"],
+        ui.draw_text(self.surface, f"Score : {self.score}", (18, 5), COLORS["score"], font=FONTS["medium"],
                     shadow=False)
         timer_text_color = (160, 40, 0) if self.time_left < 5 else COLORS["timer"]
-        ui.draw_text(self.surface, f"Time left : {self.time_left}", (SCREEN_WIDTH//2 + 50, 5),  timer_text_color, font=FONTS["medium"],
+        ui.draw_text(self.surface, f"Time left : {self.time_left}", (SCREEN_WIDTH//2 + 100, 5),  timer_text_color, font=FONTS["medium"],
                     shadow=False)
 
     def game_time_update(self):
