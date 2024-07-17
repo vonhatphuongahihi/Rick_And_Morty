@@ -21,8 +21,8 @@ RICK_PENALITY = 3
 COLORS = {"title": (255, 255, 255), "score": (255, 255, 255), "timer": (255, 255, 255),
             "buttons": {"default": (56, 67, 209), "second":  (87, 99, 255),
                         "text": (255, 255, 255), "shadow": (0, 0, 0)}}
-MUSIC_VOLUME = 0.5
-SOUNDS_VOLUME = 0.2
+MUSIC_VOLUME = 0.1
+SOUNDS_VOLUME = 0.4
 
 pygame.font.init()
 FONTS = {}
